@@ -35,13 +35,12 @@ HomeRoutes.post('/order', (req,res) => {
         item3:req.body.menuItem3,
         item4:req.body.menuItem4,
         item5:req.body.menuItem5,
-        totalPrice:parseInt(req.body.price1)+parseInt(req.body.price2)+ parseInt(req.body.price3)+parseInt(req.body.price4)+parseInt(req.body.price5)
+        totalPrice:parseInt(req.body.price)+parseInt(req.body.price2)+ parseInt(req.body.price3)+parseInt(req.body.price4)+parseInt(req.body.price5)
       }).then(function(order){
           console.log(order.toJSON());
-          console.log(req.body);
+          console.log(req.body.price);
           res.render('checkout/checkout.ejs', {
               order: order.toJSON()
-              
           });
       });
     })
