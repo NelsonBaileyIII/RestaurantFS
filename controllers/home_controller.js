@@ -24,7 +24,7 @@ HomeRoutes.get('/',function(req,res){
 
     
     });
-});
+}); 
 // Post route for orders and renders checkout page. 
 HomeRoutes.post('/order', (req,res) => {
     console.log("this was posted");
@@ -35,17 +35,16 @@ HomeRoutes.post('/order', (req,res) => {
         item3:req.body.menuItem3,
         item4:req.body.menuItem4,
         item5:req.body.menuItem5,
-        totalPrice:parseInt(req.body.price)+parseInt(req.body.price2)+ parseInt(req.body.price3)+parseInt(req.body.price4)+parseInt(req.body.price5)
+        totalPrice:parseInt(req.body.price1)+parseInt(req.body.price2)+ parseInt(req.body.price3)+parseInt(req.body.price4)+parseInt(req.body.price5)
       }).then(function(order){
           console.log(order.toJSON());
-          console.log(req.body.price);
+          console.log(req.body);
           res.render('checkout/checkout.ejs', {
               order: order.toJSON()
+              
           });
       });
     })
-
-
 
 // confirmation page routes.     
 HomeRoutes.get('/done', (req,res) => {
